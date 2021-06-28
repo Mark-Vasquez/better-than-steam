@@ -4,20 +4,20 @@ module.exports = (sequelize, DataTypes) => {
     username: {
       type: DataTypes.STRING(50),
       validate: {
-        notNull: true,
+        // notNull: true,
       }
     },
     email: {
       type: DataTypes.STRING(50),
       validate: {
-        notNull: true,
+        // notNull: true,
         isEmail: true,
       }
     },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
       validate: {
-        notNull: true,
+        // notNull: true,
       }
     }
   }, {});
