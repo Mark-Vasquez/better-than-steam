@@ -13,15 +13,18 @@
 
 
 mixin gameFeedList(gameInfo)
+
     section(class='game-container')
         div(class='game__info-wrapper')
-            div(class='game__logo-wrapper')
+            div(class='game__info__logo-wrapper')
                 img(class='game__logo' src='https://png.pngtree.com/png-vector/20190507/ourmid/pngtree-blue-samurai-head-esports-logo-png-image_1026489.jpg')
-            div(class='game__info__text-wrapper')
-                h3(class='game__info__text-title') #{gameInfo.title}
-                h4(class='game__info__text-snippet') #{gameInfo.snippet}
-            div(class='game__info__footer-wrapper')
-                button(class='game__info__footer-button') #{gameInfo.comments} Comments
-                p(class='game__info__footer-genre') #{gameInfo.genre}
+            div(class='game__info__middle-wrapper')
+                div(class='game__info__text-wrapper')
+                    h3(class='game__info__text-title') #{gameInfo.title}
+                    h4(class='game__info__text-snippet') #{gameInfo.snippet}
+                div(class='game__info__footer-wrapper')
+                    button(class='game__info__footer-button') #{gameInfo.comments} Comments
+                    p(class='game__info__footer-genre') #{gameInfo.genre}
+                    p(class='game__info__footer-publisher') #{gameInfo.publisher}
         div(class='game__votes-wrapper')
             button(class='game__vote-button') #{gameInfo.votes} Votes
