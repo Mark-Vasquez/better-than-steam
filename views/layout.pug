@@ -1,40 +1,30 @@
 doctype html
 html
   head
-      block head
-        title Better-Than-Steam
-        link(rel='stylesheet' href='/stylesheets/reset.css')
-        link(rel='stylesheet' href='/stylesheets/main.css')
-        link(rel='stylesheet' href='/stylesheets/homepage.css')
+    block head
+      title Better-Than-Steam
+      link(rel='stylesheet' href='/stylesheets/reset.css')
+      link(rel='stylesheet' href='/stylesheets/main.css')
+      link(rel='stylesheet' href='/stylesheets/homepage.css')
   body
     nav(class='navbar')
-      ul(class='navbar-items') 
+      ul(class='navbar-items')
         div(class='navbar-items__logo-wrapper')
           li(class='nav-item')
             a(href='/')
-              img(src="https://www.mygrow.me/wp-content/uploads/2020/03/302-3020719_youtube-music-logo-png-transparent-background-youtube-logo.jpg", alt="logo" href='/' id='logo' )
+              img(src="https://www.mygrow.me/wp-content/uploads/2020/03/302-3020719_youtube-music-logo-png-transparent-background-youtube-logo.jpg" alt="logo" href='/' id='logo' )
         div(class='navbar-items__user-wrappers')
           li
             a(href='/users') User
-          li 
+          li
             a(href='/users/signup') Signup
-          li 
+          li
             a(href='/users/login') Login
-          li 
-            form(action='/users/logout') 
+          li
+            form(action='/users/logout')
               button(type='submit' formmethod='post') Logout
     block content
-    div(class='game-container')
-      div(class='game__logo-info-wrapper')
-          div(class='game__logo-wrapper')
-              img(class='game__logo' src='https://png.pngtree.com/png-vector/20190507/ourmid/pngtree-blue-samurai-head-esports-logo-png-image_1026489.jpg')
-          div(class='game__info-wrapper')  
-              div(class='game__info__text-wrapper')
-                  h3(class='game__info__text-title') Test Title
-                  h4(class='game__info__text-snippet') Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, officia.
-              div(class='game__info__footer-wrapper')
-                  button(class='game__info__footer-button') 32 Comments
-                  p(class='game__info__footer-topic') RPG   
-      div(class='game__votes-wrapper')
-          button(class='game__vote-button') 42 Upvotes
-    
+
+    include gamefeed.pug
+    each gameInfo in gameData
+      +gameFeedList(gameInfo)
