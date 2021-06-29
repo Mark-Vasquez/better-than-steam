@@ -2,10 +2,11 @@ extends index
 
 block content
   label(for="loginForm") Login:
-  form(action="/users/login" method='post' name='loginForm' class='login-form')
+  form(action="/login" method='post' name='loginForm' class='login-form')
     input(type="hidden" name="_csrf" value=csrfToken)
     label(for="username") Username:
     input(type="text" name='username' value=username)
     label(for="password") Password:
     input(type="password" name='password')
     button(type='submit' ) Login
+    button(type="submit" formaction="/login/demo-user") Demo User
