@@ -4,5 +4,23 @@ html
       block head
         title="Better-Than-Steam"
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel='stylesheet' href='/stylesheets/main.css')
   body
+    nav(class='navbar')
+      ul(class='navbar-items') 
+        div(class='navbar-items__logo-wrapper')
+          li(class='nav-item')
+            a(href='/')
+              img(src="https://www.mygrow.me/wp-content/uploads/2020/03/302-3020719_youtube-music-logo-png-transparent-background-youtube-logo.jpg", alt="logo" href='/' id='logo' )
+        div(class='navbar-items__user-wrappers')
+          li
+            a(href='/users') User
+          li 
+            a(href='/users/signup') Signup
+          li 
+            a(href='/users/login') Login
+          li 
+            form(action='/users/logout') 
+              button(type='submit' formmethod='post') Logout
     block content
+    
