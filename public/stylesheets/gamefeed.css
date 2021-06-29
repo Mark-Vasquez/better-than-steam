@@ -5,11 +5,11 @@
     height: 150px;
 }
 
-.game__logo-wrapper {
+.homepage-wrapper {
     padding: 10px;
 }
 
-.game__logo-info-wrapper {
+.game__info-wrapper {
     border: 1px solid black;
     display: flex;
     flex-direction: row;
@@ -26,16 +26,14 @@
     position: relative;
 }
 
-.game__info-wrapper {
-    border: 1px solid black;
-    /* display: flex;
-    flex-direction: column; */
-}
 
 .game__info__footer-wrapper {
     display: flex;
     flex-direction: row;
     padding-top: 10px;
+    height: 50px;
+    border: 1px solid black;
+    align-items: center;
 }
 
 .game__votes-wrapper {
