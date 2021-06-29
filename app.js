@@ -13,8 +13,6 @@ const loginRouter = require("./routes/login");
 
 const { secret } = require("./config");
 const logOutRouter = require('./routes/logout');
-const { logOutUser } = require('./util.js')
-
 const app = express();
 
 // view engine setup
@@ -45,12 +43,8 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter)
-// app.use("/logout", logOutRouter);
+app.use("/logout", logOutRouter);
 
-app.post('/logout', (req, res) => {
-	logOutUser();
-	res.redirect('/logoutTest');
-});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
