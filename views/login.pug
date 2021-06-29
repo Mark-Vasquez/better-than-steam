@@ -1,7 +1,10 @@
-extends index
+extends layout
+
+append head 
+  link(rel="stylesheet", href="/stylesheets/login.css")
 
 block content
-  label(for="loginForm") Login:
+  h1 Login
   form(action="/login" method='post' name='loginForm' class='login-form')
     input(type="hidden" name="_csrf" value=csrfToken)
     label(for="username") Username:
