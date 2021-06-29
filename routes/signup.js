@@ -8,6 +8,8 @@ const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator");
 const { render } = require("../app");
 
+//app using signupRouter for /signup route
+
 const signupValidators = [
   check("email")
     .exists({ checkFalse: true })

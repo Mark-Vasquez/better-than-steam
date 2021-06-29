@@ -9,6 +9,8 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const signupRouter = require("./routes/signup");
+const loginRouter = require("./routes/login");
+
 const { secret } = require("./config");
 const logOutRouter = require('./routes/logout');
 const { logOutUser } = require('./util.js')
@@ -42,6 +44,7 @@ store.sync();
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/signup", signupRouter);
+app.use("/login", loginRouter)
 // app.use("/logout", logOutRouter);
 
 app.post('/logout', (req, res) => {

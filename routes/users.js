@@ -6,7 +6,9 @@ const { asyncHandler, logInUser, checkSessionToken } = require("../util");
 const db = require("../db/models");
 const bcrypt = require("bcryptjs");
 
+//app using this usersRouter for /users routes
 /* GET users listing. */
+
 router.get("/", function (req, res, next) {
 	res.send("respond with a resource");
 });
@@ -27,42 +29,8 @@ router.post(
 		const thisUser = await db.User.findOne({
 			where: { username },
 		});
-
-		if (thisUser) {
-			const passwordMatch = await bcrypt.compare(
-				password,
-				thisUser.hashedPassword.toString()
-			);
-
-			if (passwordMatch) {
-				logInUser(req, thisUser);
-				return res.redirect("/");
-			} else {
-				//if password doesn't match
-				res.render("login", {
-					username,
-					email,
-					csrfToken: req.csrfToken(),
-				});
-			}
-		} else {
-			//if email doesn't exists
-		}
 	})
-);
+)	
 
-router.get("/signup", function (req, res, next) {
-	res.send("respond with a resource");
-});
-
-router.post("/signup", function (req, res, next) {
-	// const {
-	//   username,
-	//   email,
-	//   password
-	// } = req.body
-	// const hashedPassword = await bcrypt.hash(password, 10)
-	// const
-});
 
 module.exports = router;
