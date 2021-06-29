@@ -8,11 +8,8 @@ const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-const signupRouter = require("./routes/signup");
-const loginRouter = require("./routes/login");
 
 const { secret } = require("./config");
-const logOutRouter = require('./routes/logout');
 const app = express();
 
 // view engine setup
@@ -41,9 +38,6 @@ store.sync();
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/signup", signupRouter);
-app.use("/login", loginRouter)
-app.use("/logout", logOutRouter);
 
 
 // catch 404 and forward to error handler
