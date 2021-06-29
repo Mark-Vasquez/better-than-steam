@@ -1,0 +1,36 @@
+.game-container {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    height: 150px;
+}
+
+.game__logo-wrapper {
+    padding: 10px;
+}
+
+.game__logo-info-wrapper {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.game__logo {
+    border: 1px solid black;
+    height: 100px;
+    position: relative;
+}
+
+.game__info-wrapper {
+    border: 1px solid black;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.game__info__footer-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+
+}
