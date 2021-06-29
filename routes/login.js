@@ -53,5 +53,11 @@ router.post(
 	})
 );
 
+router.post('/demo-user', csrfProtection, asyncHandler(async(req, res) => {
+	const demoUser = await db.User.findOne({ where: { username: "DemoUser" } })
+	await logInUser(req, demoUser.dataValues);
+	console.log(req.session);
+	res.redirect('/');
+}));
 
 module.exports = router;
