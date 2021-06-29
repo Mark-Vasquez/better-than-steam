@@ -11,8 +11,7 @@ router.get("/", function (req, res, next) {
 	res.send("respond with a resource");
 });
 
-router.get("/login", csrfProtection, function (req, res, next) {
-	checkSessionToken(req, res, next);
+router.get("/login", csrfProtection, checkSessionToken, function (req, res, next) {
 
 	res.render("login", {
 		csrfToken: req.csrfToken(),
