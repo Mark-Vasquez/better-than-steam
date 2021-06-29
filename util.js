@@ -7,8 +7,8 @@ const logInUser = (req, thisUser) => {
 	};
 };
 
-const logOutUser = () => {
-	req.session.auth = "";
+const logOutUser = (req, res) => {
+	delete req.session.auth;
 };
 
 const checkSessionToken = async (req, res, next) => {
@@ -42,4 +42,5 @@ module.exports = {
 	logInUser,
 	asyncHandler,
 	checkSessionToken,
+	logOutUser
 };
