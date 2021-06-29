@@ -1,6 +1,11 @@
+extends index
 
-form(action="/users/login" method='post')
-  input(type="hidden" name="_csrf" value=csrfToken)
-  input(type="text" name='username' value=username)
-  input(type="text" name='password' value=password)
-  button(type='submit' ) submit
+block content
+  label(for="loginForm") Login:
+  form(action="/users/login" method='post' name='loginForm' class='login-form')
+    input(type="hidden" name="_csrf" value=csrfToken)
+    label(for="username") Username:
+    input(type="text" name='username' value=username)
+    label(for="password") Password:
+    input(type="text" name='password' value=password)
+    button(type='submit' ) Login
