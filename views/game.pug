@@ -1,0 +1,10 @@
+extends layout 
+
+append head 
+	link(rel="stylesheet" href="/stylesheets/game.css")
+
+block content 
+	h1= game.title
+	img(src=game.imageUrl)
+	h2 Publisher: #{game.publisher}
+	p= game.description

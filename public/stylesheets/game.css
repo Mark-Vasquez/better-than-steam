@@ -1,0 +1,17 @@
+img {
+	height: 200px;
+	width: 300px;
+	margin-top: 20px;
+}
+
+h1 {
+	font-family: Helvetica;
+}
+
+h2 {
+	font-size: 20px;
+}
+
+p {
+	font-size: 12px;
+}

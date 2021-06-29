@@ -5,16 +5,16 @@ append head
 
 block content
   h1 Sign Up
-  form(action="/signup" method='post' class="signup-form")
+  form(action="/users/signup" method='post' class="signup-form")
     input(type="hidden" name="_csrf" value=csrfToken)
     label(for="username") Username:
     input(type="text" name='username' value=username required)
     label(for="email") Email:
-    input(type="text" name='email' value=email required)
+    input(type="email" name='email' value=email required)
     label(for="password") Password:
-    input(type="text" name='password' required)
+    input(type="password" name='password' required)
     label(for="confirmedPassword") Confirm Password:
-    input(type="text" name='confirmedPassword' required)
+    input(type="password" name='confirmedPassword' required)
     button(type='submit' ) Submit
 
   include signup-login-errors.pug

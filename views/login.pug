@@ -5,7 +5,7 @@ append head
 
 block content
   h1 Login
-  form(action="/login" method='post' name='loginForm' class='login-form')
+  form(action="/users/login" method='post' name='loginForm' class='login-form')
     input(type="hidden" name="_csrf" value=csrfToken)
     label(for="username") Username:
     input(type="text" name='username' value=username)
