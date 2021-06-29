@@ -12,6 +12,8 @@ const signupRouter = require("./routes/signup");
 const loginRouter = require("./routes/login");
 
 const { secret } = require("./config");
+const logOutRouter = require('./routes/logout');
+const { logOutUser } = require('./util.js')
 
 const app = express();
 
@@ -43,6 +45,12 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter)
+// app.use("/logout", logOutRouter);
+
+app.post('/logout', (req, res) => {
+	logOutUser();
+	res.redirect('/logoutTest');
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -59,5 +67,6 @@ app.use(function (err, req, res, next) {
 	res.status(err.status || 500);
 	res.render("error");
 });
+
 
 module.exports = app;

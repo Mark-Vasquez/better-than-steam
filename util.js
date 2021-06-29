@@ -13,19 +13,22 @@ const logOutUser = () => {
 
 const checkSessionToken = async (req, res, next) => {
 	//check req.session.auth
-
-	try {
-		const userId = req.session.auth.user.id;
-		const user = await db.User.findByPk(userId);
-		if (user) {
-			res.locals.authenticated = true;
-			res.locals.user = user;
-			next();
+	if (req.session.auth) {
+		try {
+			const userId = req.session.auth.user.id;
+			const user = await db.User.findByPk(userId);
+			if (user) {
+				res.locals.authenticated = true;
+				res.locals.user = user;
+				next();
+			}
+		} catch (e) {
+			// console.error(e);
+			// next(e);
 		}
-	} catch (e) {
-		console.log();
-		console.error(e);
-		next(e);
+	} else {
+		res.locals.authenticated = false;
+		next();
 	}
 };
 

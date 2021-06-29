@@ -13,7 +13,24 @@ router.get("/", function (req, res, next) {
 	res.send("respond with a resource");
 });
 
+router.get("/login", csrfProtection, checkSessionToken, function (req, res, next) {
 
+	res.render("login", {
+		csrfToken: req.csrfToken(),
+	});
+});
+
+router.post(
+	"/login",
+	csrfProtection,
+	asyncHandler(async function (req, res, next) {
+		const { username, password } = req.body;
+
+		const thisUser = await db.User.findOne({
+			where: { username },
+		});
+	})
+)	
 
 
 module.exports = router;
