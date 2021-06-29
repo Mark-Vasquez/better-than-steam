@@ -2,7 +2,7 @@ h1 {
 	text-align: center;
 }
 
-.login-form {
+.signup-form {
 	display: flex;
 	margin: 10% auto;
 	text-align: left;
@@ -11,14 +11,14 @@ h1 {
 	/* align-items: center; */
 }
 
-.login-form input {
+.signup-form input {
 	margin-bottom: 10px;
 	padding-bottom: 10px;
 	width: 400px;
 	align-self: center;
 }
 
-.login-form button {
+.signup-form button {
 	margin-bottom: 10px;
 	padding-bottom: 10px;
 	width: 100px;
