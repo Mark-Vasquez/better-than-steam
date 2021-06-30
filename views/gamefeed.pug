@@ -1,24 +1,23 @@
 
 
-//- format for data passed in form layout
-//- gameInfo
-//-   gameInfo.title
-//-   gameInfo.snippet
-//-   gameInfo.logo
-//-   gameInfo.comments
-//-   gameInfo.genre
-//-   gameInfo.votes
-//-   gameInfo.publisher
+//- //- format for data passed in form layout
+//- //- gameInfo
+//- //-   gameInfo.title
+//- //-   gameInfo.snippet
+//- //-   gameInfo.logo
+//- //-   gameInfo.comments
+//- //-   gameInfo.genre
+//- //-   gameInfo.votes
+//- //-   gameInfo.publisher
 
 
 
 
 mixin gameFeedList(gameInfo)
-
     section(class='game-container')
         div(class='game__info-wrapper')
             div(class='game__info__logo-wrapper')
-                img(class='game__logo' src='https://png.pngtree.com/png-vector/20190507/ourmid/pngtree-blue-samurai-head-esports-logo-png-image_1026489.jpg')
+                img(class='game__logo' src=gameInfo.imageUrl)
             div(class='game__info__middle-wrapper')
                 div(class='game__info__text-wrapper')
                     h3(class='game__info__text-title') #{gameInfo.title}
