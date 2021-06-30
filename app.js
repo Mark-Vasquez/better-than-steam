@@ -11,6 +11,7 @@ const usersRouter = require("./routes/users");
 const gamesRouter = require("./routes/games");
 const { checkSessionToken } = require("./util");
 
+const commentsRouter = require("./routes/comments");
 
 const { secret } = require("./config");
 const app = express();
@@ -45,6 +46,7 @@ app.use(checkSessionToken)
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/games", gamesRouter);
+app.use("/comments", commentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

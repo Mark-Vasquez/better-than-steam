@@ -1,17 +1,32 @@
-img {
-	height: 200px;
-	width: 300px;
-	margin-top: 20px;
-}
-
-h1 {
+.title {
+	text-align: center;
 	font-family: Helvetica;
 }
 
-h2 {
+.gameImg {
+	float: left;
+	height: 300px;
+	width: 400px;
+	/* padding-left: 200px; */
+}
+
+.publisher {
+	display: block;
 	font-size: 20px;
 }
 
-p {
+/* .textCollection{
+} */
+
+.description {
+	display: inline;
 	font-size: 12px;
+}
+
+.genre{
+	text-align: center;
+}
+
+.snippet{
+	display: block;
 }
