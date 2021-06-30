@@ -20,15 +20,18 @@ module.exports = (sequelize, DataTypes) => {
 			},
 			hashedPassword: {
 				type: DataTypes.STRING.BINARY,
+				allowNull: false,
 				validate: {
-					// notNull: true,
+					notNull: true,
 				},
 			},
 		},
 		{}
 	);
 	User.associate = function (models) {
-		// associations can be defined here
+		User.hasMany(models.Comment, { foreignKey: "userId" });
+		User.hasMany(models.Like, { foreignKey: "userId" });
+		User.hasMany(models.Upvote, { foreignKey: "userId" });
 	};
 	return User;
 };
