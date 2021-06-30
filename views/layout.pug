@@ -24,7 +24,3 @@ html
             form(action='/users/logout')
               button(type='submit' formmethod='post') Logout
     block content
-
-    include gamefeed.pug
-    each gameInfo in gameData
-      +gameFeedList(gameInfo)
