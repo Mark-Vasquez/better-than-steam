@@ -25,6 +25,9 @@ module.exports = {
 			publisher: {
 				type: Sequelize.STRING,
 			},
+			snippet: {
+				type: Sequelize.TEXT
+			},
 			createdAt: {
 				allowNull: false,
 				type: Sequelize.DATE,
