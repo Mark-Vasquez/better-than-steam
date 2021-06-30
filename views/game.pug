@@ -1,10 +1,29 @@
-extends layout 
+extends layout
 
-append head 
+append head
 	link(rel="stylesheet" href="/stylesheets/game.css")
+	script(src="/javascripts/game.js" type="module" defer)
 
-block content 
-	h1= game.title
-	img(src=game.imageUrl)
-	h2 Publisher: #{game.publisher}
-	p= game.description
+block content
+	div.title
+		h1= game.title
+	div.genre
+		p= game.genre
+	div.gameImg
+		img(src=game.imageUrl)
+	div.textCollection
+		div.publisher
+			h2 Publisher: #{game.publisher}
+		div.snippet
+			p= game.snippet
+		div.description
+			p= game.description
+
+	textarea.commentContent(placeholder="Write your comment here...")
+	button#postCommentButton(type="submit") Post Comment
+	div.commentContainer
+		each comment in comments
+			form(action="/" method="post")
+				div= comment.content
+				button(type="submit") Edit
+				button(type="submit") Delete

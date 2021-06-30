@@ -7,7 +7,8 @@ router.get(
 	"/:id",
 	asyncHandler(async (req, res) => {
 		const game = await db.Game.findByPk(req.params.id);
-		res.render("game", { game });
+		const comments = await db.Comment.findAll({ where: { gameId: req.params.id }, order: ["createdAt"]});
+		res.render("game", { game, comments });
 	})
 );
 

@@ -11,13 +11,13 @@ const { check, validationResult } = require("express-validator");
 /* GET users listing. */
 const signupValidators = [
   check("email")
-    .exists({ checkFalse: true })
+    .exists({ checkFalsy: true })
     .withMessage("Please provide a value for email")
     .normalizeEmail()
     .isEmail()
     .withMessage("Please provide a valid email"),
   check("username")
-    .exists({ checkFalse: true })
+    .exists({ checkFalsy: true })
     .withMessage("Please provide a value for username"),
   check("password")
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, "g")
@@ -41,7 +41,7 @@ router.post(
 			where: { username },
 		});
 	})
-)	
+)
 
 router.get("/login", csrfProtection, checkSessionToken, function (req, res, next) {
 	res.render("login", {
@@ -73,9 +73,7 @@ router.post(
 	const validatorErrors = validationResult(req);
 
 	if (validatorErrors.isEmpty()) {
-	  console.log(validatorErrors.isEmpty());
 	  const hashedPassword = await bcrypt.hash(password, 10);
-	  // user.hashedPassword = hashedPassword;
 	  const user = await db.User.create({
 		username,
 		email,
@@ -84,10 +82,8 @@ router.post(
 	  logInUser(req, user);
 	  return res.redirect("/");
 	} else {
-	  console.log("validatorErrors is not empty");
 	  errors = validatorErrors.array().map((error) => error.msg);
 	}
-	console.log("Prepare to render!");
 	res.render("signup", { username, password, errors });
   })
 );
@@ -95,7 +91,6 @@ router.post(
 router.post('/demo', csrfProtection, asyncHandler(async(req, res) => {
 	const demoUser = await db.User.findOne({ where: { username: "DemoUser" } })
 	await logInUser(req, demoUser.dataValues);
-	console.log(req.session);
 	res.redirect('/');
 }));
 
