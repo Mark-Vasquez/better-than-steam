@@ -2,7 +2,7 @@
 module.exports = {
 	up: (queryInterface, Sequelize) => {
 		return queryInterface.createTable(
-			"Likes",
+			"Upvotes",
 			{
 				id: {
 					allowNull: false,
@@ -14,13 +14,13 @@ module.exports = {
 					allowNull: false,
 					type: Sequelize.INTEGER,
 					references: { model: "Users" },
-					unique: "unique-like",
+					unique: "unique-upvote",
 				},
-				commentId: {
+				gameId: {
 					allowNull: false,
 					type: Sequelize.INTEGER,
-					references: { model: "Comments" },
-					unique: "unique-like",
+					references: { model: "Games" },
+					unique: "unique-upvote",
 				},
 				createdAt: {
 					allowNull: false,
@@ -33,14 +33,14 @@ module.exports = {
 			},
 			{
 				uniqueKeys: {
-					"unique-like": {
-						fields: ["userId", "commentId"],
+					"unique-upvote": {
+						fields: ["userId", "gameId"],
 					},
 				},
 			}
 		);
 	},
 	down: (queryInterface, Sequelize) => {
-		return queryInterface.dropTable("Likes");
+		return queryInterface.dropTable("Upvotes");
 	},
 };
