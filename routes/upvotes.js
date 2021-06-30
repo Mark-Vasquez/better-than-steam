@@ -13,7 +13,7 @@
 
 // router.post('/comment', asyncHandler(async (req, res) => {
 
-//   const userId = req.session.auth.user.userId
+//   const userId = req.session.auth.user.id
 
 // }))
 

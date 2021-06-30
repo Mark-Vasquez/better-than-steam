@@ -136,4 +136,20 @@ router.post('/demo', csrfProtection, asyncHandler(async(req, res) => {
 	res.redirect('/');
 }));
 
+router.post('/testroute', asyncHandler( async (req, res) => {
+  const gameId = req.body.gameId
+  const userId = req.session.auth.user.id
+
+
+  await db.Upvote.create({
+    userId,
+    gameId
+  })
+
+
+  res.json({gameId})
+}))
+
+
+
 module.exports = router;

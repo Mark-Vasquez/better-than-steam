@@ -9,6 +9,8 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const gamesRouter = require("./routes/games");
+const { checkSessionToken } = require("./util");
+
 
 const { secret } = require("./config");
 const app = express();
@@ -34,9 +36,12 @@ app.use(
 	})
 );
 
+
+
 // create Session table if it doesn't already exist
 store.sync();
 
+app.use(checkSessionToken)
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/games", gamesRouter);

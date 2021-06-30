@@ -35,6 +35,7 @@ const checkSessionToken = async (req, res, next) => {
 	}
 };
 
+
 const testCheckSession = async (req) => {
 	const session = req.session;
 	console.log(session.user);
