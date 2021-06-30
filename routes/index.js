@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const asyncHandler = (handler) => (req, res, next) => handler(req, res, next).catch(next);
+const db = require('../db/models')
+
 
 
 
@@ -32,18 +35,19 @@ const testGameInfo3 = {
   publisher: 'yeeters'
 }
 
-const gameData = [testGameInfo1, testGameInfo2, testGameInfo3]
-
 
 
 
 /* GET home page. */
 
-router.get('/', function(req, res, next) {
+router.get('/', asyncHandler(async function(req, res, next) {
+
+  const gameData = await db.Game.findAll()
+
   res.render('index', {
     title: 'a/A Express Skeleton Home',
     gameData
   });
-});
+}));
 
 module.exports = router;
