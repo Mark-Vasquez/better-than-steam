@@ -19,8 +19,14 @@ module.exports = {
 			imageUrl: {
 				type: Sequelize.STRING(400),
 			},
+			genre: {
+				type: Sequelize.STRING(50)
+			},
 			publisher: {
 				type: Sequelize.STRING,
+			},
+			snippet: {
+				type: Sequelize.TEXT
 			},
 			createdAt: {
 				allowNull: false,

@@ -16,6 +16,7 @@ module.exports = {
 					publisher: "Gibbeh",
 					description: "Super cool game",
 					imageUrl: "https://i.imgur.com/tg9E5H3.jpg",
+					genre: "shooter",
 					createdAt: new Date(),
 					updatedAt: new Date(),
 				},
