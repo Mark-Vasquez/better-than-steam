@@ -31,17 +31,54 @@ router.get("/", function (req, res, next) {
 	res.send("respond with a resource");
 });
 
+// router.post(
+// 	"/login",
+// 	csrfProtection,
+// 	asyncHandler(async function (req, res, next) {
+// 		const { username, password } = req.body;
+
+// 		const thisUser = await db.User.findOne({
+// 			where: { username },
+// 		});
+
+
+
+// 	})
+// )
+
+
 router.post(
 	"/login",
 	csrfProtection,
 	asyncHandler(async function (req, res, next) {
+
 		const { username, password } = req.body;
 
 		const thisUser = await db.User.findOne({
 			where: { username },
 		});
+
+		if (thisUser) {
+			const passwordMatch = await bcrypt.compare(
+				password,
+				thisUser.hashedPassword.toString()
+			);
+
+			if (passwordMatch) {
+				logInUser(req, thisUser);
+				return res.redirect("/");
+			} else {
+				//if password doesn't match
+				res.render("login", {
+					username,
+					csrfToken: req.csrfToken(),
+				});
+			}
+		} else {
+			//if email doesn't exists
+		}
 	})
-)	
+);
 
 router.get("/login", csrfProtection, checkSessionToken, function (req, res, next) {
 	res.render("login", {
