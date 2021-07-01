@@ -23,7 +23,7 @@ router.post(
 			await db.Comment.create({ content, gameId, userId });
 			const comments = await db.Comment.findAll({
 				where: { gameId },
-				order: ["createdAt"],
+				order: [["createdAt", "DESC"]],
 			});
 			await res.json({ comments });
 		} else {

@@ -45,6 +45,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 				newDivContainer.appendChild(newDeleteButton);
 				commentContainer.appendChild(newDivContainer);
 			});
+			commentField.value = "";
 		}
 	});
 });
