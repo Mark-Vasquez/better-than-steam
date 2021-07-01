@@ -26,29 +26,24 @@ const signupValidators = [
     ),
 ];
 
+const loginValidators = [
+  check("username")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for username"),
+  check("password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for password"),
+]
 
 router.get("/", function (req, res, next) {
 	res.send("respond with a resource");
 });
 
-// router.post(
-// 	"/login",
-// 	csrfProtection,
-// 	asyncHandler(async function (req, res, next) {
-// 		const { username, password } = req.body;
-
-// 		const thisUser = await db.User.findOne({
-// 			where: { username },
-// 		});
-
-
-
-// 	})
-// )
 
 
 router.post(
 	"/login",
+  loginValidators,
 	csrfProtection,
 	asyncHandler(async function (req, res, next) {
 
@@ -57,6 +52,9 @@ router.post(
 		const thisUser = await db.User.findOne({
 			where: { username },
 		});
+
+    let errors = [];
+    const validatorErrors = validationResult(req);
 
 		if (thisUser) {
 			const passwordMatch = await bcrypt.compare(
