@@ -26,29 +26,24 @@ const signupValidators = [
     ),
 ];
 
+const loginValidators = [
+  check("username")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for username"),
+  check("password")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a value for password"),
+]
 
 router.get("/", function (req, res, next) {
 	res.send("respond with a resource");
 });
 
-// router.post(
-// 	"/login",
-// 	csrfProtection,
-// 	asyncHandler(async function (req, res, next) {
-// 		const { username, password } = req.body;
-
-// 		const thisUser = await db.User.findOne({
-// 			where: { username },
-// 		});
-
-
-
-// 	})
-// )
 
 
 router.post(
 	"/login",
+  loginValidators,
 	csrfProtection,
 	asyncHandler(async function (req, res, next) {
 
@@ -58,31 +53,56 @@ router.post(
 			where: { username },
 		});
 
-		if (thisUser) {
-			const passwordMatch = await bcrypt.compare(
-				password,
-				thisUser.hashedPassword.toString()
-			);
+    console.log(thisUser);
 
-			if (passwordMatch) {
-				logInUser(req, thisUser);
-				return res.redirect("/");
-			} else {
-				//if password doesn't match
-				res.render("login", {
-					username,
-					csrfToken: req.csrfToken(),
-				});
-			}
-		} else {
-			//if email doesn't exists
-		}
+    let errors = [];
+    const validatorErrors = validationResult(req);
+
+    if (validatorErrors.isEmpty()) {
+      if (thisUser !== null) {
+
+        const passwordMatch = await bcrypt.compare(
+          password,
+          thisUser.hashedPassword.toString()
+        );
+
+        if (passwordMatch) {
+          logInUser(req, thisUser);
+          return res.redirect("/");
+        } else {
+          //if password doesn't match
+          res.render("login", {
+            username,
+            csrfToken: req.csrfToken(),
+            errors: ['your password is not correct']
+          });
+        }
+
+      } else {
+        res.render("login", {
+          username,
+          csrfToken: req.csrfToken(),
+          errors: ['your username doesn"t exists, try again']
+        });
+      }
+
+    } else {
+      errors = validatorErrors.array().map((error) => error.msg);
+      res.render('login', {
+        username,
+        csrfToken: req.csrfToken(),
+        errors
+      })
+    }
+
+
 	})
 );
 
 router.get("/login", csrfProtection, checkSessionToken, function (req, res, next) {
 	res.render("login", {
 		csrfToken: req.csrfToken(),
+    errors: []
 	});
 });
 
@@ -93,7 +113,9 @@ router.post('/logout', (req, res) => {
 
 router.get("/signup", function (req, res, next) {
   const { username, email, password, confirmedPassword } = req.body;
-  res.render("signup");
+  res.render("signup", {
+    errors: []
+  });
 });
 
 router.post(
@@ -102,12 +124,15 @@ router.post(
   asyncHandler(async function (req, res, next) {
 	const { username, email, password, confirmedPassword } = req.body;
 
-	if (password !== confirmedPassword) {
-	  return res.render("signup", {});
-	}
-
 	let errors = [];
 	const validatorErrors = validationResult(req);
+
+	if (password !== confirmedPassword) {
+	  return res.render("signup", {
+      errors: ['your password doesn"t match up']
+    });
+	}
+
 
 	if (validatorErrors.isEmpty()) {
 	  const hashedPassword = await bcrypt.hash(password, 10);

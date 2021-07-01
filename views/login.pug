@@ -1,10 +1,15 @@
 extends layout
 
-append head 
+append head
   link(rel="stylesheet", href="/stylesheets/login.css")
 
 block content
   h1 Login
+  if errors.length
+    append head
+      link(rel="stylesheet" href="/stylesheets/errors.css")
+    br
+    include loginSignUpErrors.pug
   form(action="/users/login" method='post' name='loginForm' class='login-form')
     input(type="hidden" name="_csrf" value=csrfToken)
     label(for="username") Username:

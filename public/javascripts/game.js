@@ -58,4 +58,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			commentField.value = "";
 		}
 	});
+
+
 });

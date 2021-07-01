@@ -1,32 +1,85 @@
-.title {
+
+.game-container{
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	padding: 5%;
+	background-color: white;
+	max-width: 600px;
+	width: 78%;
+}
+
+.game__title-wrapper {
 	text-align: center;
 	font-family: Helvetica;
 }
 
-.gameImg {
-	float: left;
-	height: 300px;
-	width: 400px;
-	/* padding-left: 200px; */
+.game__img-wrapper {
+	display: flex;
+	justify-content: center;
+	margin: 30px auto
 }
 
-.publisher {
+.game__img {
+	height: 300px;
+	width: auto;
+	margin: auto
+}
+
+.game__text__publisher-wrapper {
 	display: block;
 	font-size: 20px;
 }
 
-/* .textCollection{
-} */
+.game__text-wrapper{
+	margin: 30px auto
+}
 
-.description {
+.game__text__description-wrapper {
 	display: inline;
 	font-size: 12px;
 }
 
-.genre{
+.game__text__description {
+	font-size: 20px;
+}
+
+.game__genre-wrapper{
 	text-align: center;
 }
 
-.snippet{
+.game__text__snippet-wrapper{
 	display: block;
+}
+
+#post-comment-button {
+	width: 160px;
+	float: right;
+	margin-top: 10px
+}
+
+.comments__content__user{
+	padding-right: 10px;
+	padding-top: 10px
+}
+
+
+.comments__content__user-avatar {
+	width: 40px;
+
+}
+
+.comments-container {
+	margin: 30px 80px auto 10px
+}
+
+.comments__content-wrapper {
+	margin: 10px auto;
+	display: flex;
+	flex-direction: row;
+}
+
+.comments__content__text-username{
+	font-size: 14px;
+	font-weight: bold;
 }
