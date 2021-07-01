@@ -31,4 +31,7 @@ mixin gameFeedList(gameInfo)
                   span(class='game__info__footer-genre') #{gameInfo.genre}
                   span(class='game__info__footer-publisher') #{gameInfo.publisher}
               div(class='game__votes-wrapper')
-                button(class='game__vote-button' value=gameInfo.id) #{gameVotes[gameInfo.id] || 0}
+                  button(class='game__vote-button' value=gameInfo.id)
+                    span(class='game__votes-icon-wrapper')
+                      div(class='triangle__icon') ▲
+                      span(class='vote__count') #{gameVotes[gameInfo.id] || 0}
