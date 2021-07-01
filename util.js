@@ -1,6 +1,9 @@
 const db = require("./db/models");
 const asyncHandler = (handler) => (req, res, next) =>
 	handler(req, res, next).catch(next);
+
+
+
 const logInUser = (req, thisUser) => {
 	req.session.auth = {
 		user: thisUser,
@@ -31,6 +34,7 @@ const checkSessionToken = async (req, res, next) => {
 		next();
 	}
 };
+
 
 const testCheckSession = async (req) => {
 	const session = req.session;
