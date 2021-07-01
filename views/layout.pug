@@ -16,7 +16,7 @@ html
         div(class='navbar-items__user-wrappers')
           if locals.authenticated
             li
-              a(href='/users') #{username}
+              a(href='/users') #{locals.user.username}
             li
               form(action='/users/logout')
                 button(type='submit' formmethod='post') Logout
