@@ -82,7 +82,7 @@ router.post(
         res.render("login", {
           username,
           csrfToken: req.csrfToken(),
-          errors: ['your email doesn"t exists, try again']
+          errors: ['your username doesn"t exists, try again']
         });
       }
 
