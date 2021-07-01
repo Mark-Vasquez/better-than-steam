@@ -26,6 +26,15 @@ block content
 	div.comment-container
 		each comment in comments
 			div.comment-content-and-buttons
+				div.username= comment.User.username
 				div.comment= comment.content
-				button(class="edit" value=comment.id) Edit
-				button(class="delete" value=comment.id) Delete
+				if locals.user
+					if comment.User.username === locals.user.username
+						button(class="edit" value=comment.id) Edit
+						button(class="delete" value=comment.id) Delete
+					else
+						button(class="edit" value=comment.id disabled) Edit
+						button(class="delete" value=comment.id disabled) Delete
+				else
+					button(class="edit" value=comment.id disabled) Edit
+					button(class="delete" value=comment.id disabled) Delete

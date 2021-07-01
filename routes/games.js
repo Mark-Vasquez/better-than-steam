@@ -10,6 +10,7 @@ router.get(
 		const comments = await db.Comment.findAll({
 			where: { gameId: req.params.id },
 			order: [["createdAt", "DESC"]],
+			include: db.User,
 		});
 		res.render("game", { game, comments });
 	})
