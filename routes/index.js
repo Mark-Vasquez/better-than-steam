@@ -27,10 +27,10 @@ const numComments = async () => {
   for (let i = 0; i < allComments.length; i++) {
     const comment = allComments[i].dataValues;
     const gameId = comment.gameId
-    if (gameComment[gameId]) {
-      gameComment[gameId]++
+    if (gameComments[gameId]) {
+      gameComments[gameId]++
     } else {
-      gameComment = 1
+      gameComments[gameId] = 1
     }
   }
   return gameComments
