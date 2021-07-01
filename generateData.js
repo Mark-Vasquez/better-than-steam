@@ -5,8 +5,6 @@ const { uniqueNamesGenerator, adjectives, colors, animals } = require('unique-na
 const bcrypt = require('bcryptjs')
 
 
-
-
 // const LoremIpsum = require("lorem-ipsum").LoremIpsum;
 
 const lorem = new LoremIpsum({
@@ -40,7 +38,6 @@ const commentSeedDataFunc = () => {
   }
 }
 commentSeedDataFunc()
-//int between 2-5
 
 
 const passwordGenerator = () => {
@@ -68,16 +65,36 @@ const userSeedDataFunc = () => {
     })
   }
 }
-
 userSeedDataFunc()
+
+const voteSeedDataArr = []
+
+const voteSeedDataFunc = () => {
+  //loop over all users
+    //loop over all games
+      //50% chance of voting
+  const numGames = 11
+  const numUsers = 22
+  for (let i = 1; i <= numGames; i++) {
+    const gameId = i
+    for (let j = 1; j <= numUsers; j++) {
+      const userId = j
+      const prob = Math.round(Math.random())
+      if (prob) {
+        voteSeedDataArr.push({
+          userId,
+          gameId,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        })
+      }
+    }
+  }
+}
+voteSeedDataFunc()
 
 module.exports = {
   commentSeedDataArr,
   userSeedDataArr,
+  voteSeedDataArr,
 }
-
-
-// unseed
-// unmigrate
-// migrate
-// seed
