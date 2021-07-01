@@ -14,19 +14,21 @@
 
 
 mixin gameFeedList(gameInfo)
-    section(class='game-container')
-        div(class='game__info-wrapper')
-            div(class='game__info__logo-wrapper')
-                a(href='/' + "games/" + gameInfo.id)
-                    img(class='game__logo' src=gameInfo.imageUrl)
-            div(class='game__info__middle-wrapper')
-                div(class='game__info__text-wrapper')
-                    h3(class='game__info__text-title') #{gameInfo.title}
-                    h4(class='game__info__text-snippet') #{gameInfo.snippet}
-                div(class='game__info__footer-wrapper')
-                    a(href='/' + "games/" + gameInfo.id)
-                        button(class='game__info__footer-button') #{gameInfo.comments} Comments
-                    p(class='game__info__footer-genre') #{gameInfo.genre}
-                    p(class='game__info__footer-publisher') #{gameInfo.publisher}
-        div(class='game__votes-wrapper')
-            button(class='game__vote-button' value=gameInfo.id) Votes
+  div(class='game-container') 
+      div(class='game__info-wrapper') 
+          div(class='game__info__logo-wrapper') 
+              a(class='game__logo-parent' href='/' + "games/" + gameInfo.id)
+                  img(class='game__logo' src=gameInfo.imageUrl)
+              div(class='game__info__middle-wrapper')
+                h3(class='game__info__text-title') #{gameInfo.title} 
+                h4(class='game__info__text-snippet') #{gameInfo.snippet} 
+                div(class='game__info__footer-wrapper') 
+                  div(class='game__info__comment-outer') 
+                    a(id='comment__icon-wrapper' href='/' + "games/" + gameInfo.id) 
+                      img(class='comment__icon' src='https://image.pngaaa.com/845/1627845-middle.png')
+                    a(id='comment__icon-wrapper' href='/' + "games/" + gameInfo.id) 
+                      span(class='comment__word') #{gameInfo.comments} Comments
+                  span(class='game__info__footer-genre') #{gameInfo.genre}
+                  span(class='game__info__footer-publisher') #{gameInfo.publisher}
+              div(class='game__votes-wrapper')
+                button(class='game__vote-button' value=gameInfo.id) Votes
