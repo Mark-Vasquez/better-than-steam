@@ -17,6 +17,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			body: JSON.stringify({ content, gameId }),
 		});
 		const res = await resJson.json();
+		console.log(resJson);
 		if (res.errors) {
 			errorUl.innerHTML = "";
 			res.errors.forEach((error) => {
@@ -31,15 +32,24 @@ window.addEventListener("DOMContentLoaded", (event) => {
 				const newEditButton = document.createElement("button");
 				const newDeleteButton = document.createElement("button");
 				const newDivContainer = document.createElement("div");
+                const commentUsername = document.createElement("div");
 
+                newDivContainer.class= "comment-content-and-buttons";
+                commentUsername.innerHTML = comment.User.username;
 				newComment.innerHTML = comment.content;
+                commentUsername.class = "username";
+                newComment.class = "comment";
 				newEditButton.class = "edit";
 				newEditButton.innerText = "Edit";
 				newEditButton.value = comment.id;
 				newDeleteButton.class = "delete";
 				newDeleteButton.innerText = "Delete";
 				newDeleteButton.value = comment.id;
-
+				if (commentUsername.innerHTML !== res.username){
+					newEditButton.disabled = true;
+					newDeleteButton.disabled = true;
+				}
+				newDivContainer.appendChild(commentUsername);
 				newDivContainer.appendChild(newComment);
 				newDivContainer.appendChild(newEditButton);
 				newDivContainer.appendChild(newDeleteButton);
