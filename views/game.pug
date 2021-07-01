@@ -21,13 +21,15 @@ block content
     div.errors-container
       ul#errors-ul
     textarea(class="comment-content" placeholder="Write your comment here...")
-    button(id="post-comment-button" type="submit") Post Comment
+    div(class='post-comment-button-wrapper')
+      button(id="post-comment-button" type="submit") Post Comment
     div(class='comments-container')
       each comment in comments
         div(class='comments__content-wrapper')
           div(class='comments__content__user')
             img(class='comments__content__user-avatar' src="https://www.pikpng.com/pngl/b/279-2797047_user-avatar-icon-portable-network-graphics-clipart.png", alt="")
           div(class='comments__content__text-wrapper')
+            p(class='comments__content__text-username') testusername
             p(class='comments__content__text') #{comment.content}
             button(class="edit" value=comment.id) Edit
             button(class="delete" value=comment.id) Delete

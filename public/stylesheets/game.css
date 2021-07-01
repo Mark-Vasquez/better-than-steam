@@ -52,13 +52,21 @@
 	display: block;
 }
 
+#post-comment-button {
+	width: 160px;
+	float: right;
+	margin-top: 10px
+}
+
 .comments__content__user{
-	padding-right: 10px
+	padding-right: 10px;
+	padding-top: 10px
 }
 
 
 .comments__content__user-avatar {
-	width: 40px
+	width: 40px;
+
 }
 
 .comments-container {
@@ -69,4 +77,9 @@
 	margin: 10px auto;
 	display: flex;
 	flex-direction: row;
+}
+
+.comments__content__text-username{
+	font-size: 14px;
+	font-weight: bold;
 }
