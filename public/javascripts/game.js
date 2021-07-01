@@ -3,6 +3,6 @@ window.addEventListener("DOMContentLoaded", (event)=>{
 
     postCommentButton.addEventListener('click', (e) => {
         e.preventDefault();
-        
+
     })
 });
