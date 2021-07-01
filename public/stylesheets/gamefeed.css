@@ -3,7 +3,6 @@
     justify-content: space-between;
     border-bottom: 1px solid #e8e8e8;
     height: 120%;
-    cursor: pointer;
     position: relative;
     flex-direction: row;
 }
@@ -142,17 +141,67 @@ div {
 }
 
 .game__votes-wrapper {
-    display: flex;
-    align-items: center;
-    border: 1px solid black;
-    padding: 10px;
-    position: absolute;
-    right: 40px;
-    border-color: #e8e8e8;
+  position: absolute;
+  right: 20px;
+  display: block;
+  cursor: pointer;
+  margin: 10px
 }
 
 .game__vote-button {
-    height: 80px;
+    height: 74px;
+    width: 64px;
+    cursor: pointer;
+    background-color: white;
+    border-color: #e8e8e8 !important;
+    border: 1px solid transparent;
+    display: inline-flex;
+    margin-left: 12px;
+    vertical-align: top;
+    border-radius: 3px;
+    padding: 8px;
+    box-sizing: border-box;
+    outline: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none !important;
+}
+
+.game__vote-button:hover {
+  transition: all .3s ease;
+}
+
+.game__votes-icon-wrapper{
+  line-height: 16px;
+  flex-direction: column !important;
+  align-items: center;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: inherit;
+  font-weight: 600;
+  font-size: 11px;
+  flex: 1;
+}
+
+.triangle__icon {
+  /* background-image: url("https://png.pngtree.com/png-clipart/20190726/ourmid/pngtree-abstract-calligraphy-black-luxury-gold-brush-border-png-image_1610085.jpg");
+  /* background-color: blue;
+  background-blend-mode: multiply; */
+  height: 20px;
+  width: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.triangle__icon-voted {
+  color: red;
+}
+
+.vote__count {
+  font-weight: 600;
+  font-size: 13px;
 }
 
 a {
