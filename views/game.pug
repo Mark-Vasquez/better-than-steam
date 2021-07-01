@@ -19,11 +19,13 @@ block content
 		div.description
 			p= game.description
 
-	textarea.commentContent(placeholder="Write your comment here...")
-	button#postCommentButton(type="submit") Post Comment
-	div.commentContainer
+	div.errors-container
+		ul#errors-ul
+	textarea(class="comment-content" placeholder="Write your comment here...")
+	button(id="post-comment-button" type="submit") Post Comment
+	div.comment-container
 		each comment in comments
-			form(action="/" method="post")
-				div= comment.content
-				button(type="submit") Edit
-				button(type="submit") Delete
+			div.comment-content-and-buttons
+				div.comment= comment.content
+				button(class="edit" value=comment.id) Edit
+				button(class="delete" value=comment.id) Delete
