@@ -1,31 +1,33 @@
 extends layout
 
 append head
-	link(rel="stylesheet" href="/stylesheets/game.css")
-	script(src="/javascripts/game.js" type="module" defer)
+  link(rel="stylesheet" href="/stylesheets/game.css")
+  script(src="/javascripts/game.js" type="module" defer)
 
 block content
-	div.title
-		h1= game.title
-	div.genre
-		p= game.genre
-	div.gameImg
-		img(src=game.imageUrl)
-	div.textCollection
-		div.publisher
-			h2 Publisher: #{game.publisher}
-		div.snippet
-			p= game.snippet
-		div.description
-			p= game.description
+  div(class='game-container')
+    div(class='game__title-wrapper title')
+      h1(class='game__title')= game.title
+    div(class='game__genre-wrapper')
+      p(class='game__genre')= game.genre
+    div(class='game__img-wrapper')
+      img(class='game__img' src=game.imageUrl)
+    div(class='game__text-wrapper')
+      div(class='game__text__publisher-wrapper')
+        h2(class='game__text__publisher') Publisher: #{game.publisher}
+      div(class='game__text__description-wrapper')
+        p(class='game__text__description') #{game.description}
 
-	div.errors-container
-		ul#errors-ul
-	textarea(class="comment-content" placeholder="Write your comment here...")
-	button(id="post-comment-button" type="submit") Post Comment
-	div.comment-container
-		each comment in comments
-			div.comment-content-and-buttons
-				div.comment= comment.content
-				button(class="edit" value=comment.id) Edit
-				button(class="delete" value=comment.id) Delete
+    div.errors-container
+      ul#errors-ul
+    textarea(class="comment-content" placeholder="Write your comment here...")
+    button(id="post-comment-button" type="submit") Post Comment
+    div(class='comments-container')
+      each comment in comments
+        div(class='comments__content-wrapper')
+          div(class='comments__content__user')
+            img(class='comments__content__user-avatar' src="https://www.pikpng.com/pngl/b/279-2797047_user-avatar-icon-portable-network-graphics-clipart.png", alt="")
+          div(class='comments__content__text-wrapper')
+            p(class='comments__content__text') #{comment.content}
+            button(class="edit" value=comment.id) Edit
+            button(class="delete" value=comment.id) Delete
