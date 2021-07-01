@@ -1,10 +1,17 @@
-extends layout 
+extends layout
 
-append head 
+append head
   link(rel="stylesheet", href="/stylesheets/signup.css")
+  script(src="/javascripts/signUpErrors.js" type="module")
+
 
 block content
   h1 Sign Up
+  if errors.length
+    append head
+      link(rel="stylesheet" href="/stylesheets/errors.css")
+    br
+    include loginSignUpErrors.pug
   form(action="/users/signup" method='post' class="signup-form")
     input(type="hidden" name="_csrf" value=csrfToken)
     label(for="username") Username:
@@ -16,7 +23,6 @@ block content
     label(for="confirmedPassword") Confirm Password:
     input(type="password" name='confirmedPassword' required)
     button(type='submit' ) Submit
-
-  include signup-login-errors.pug
-  if errors
-    +errorLogs(errors)
+  div.test-button-wrapper
+    p To test express validators, press this button to turn off the required attribute for the inputs
+    button(type='submit' class='test-backend-button') Turn off required

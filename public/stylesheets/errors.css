@@ -1,0 +1,10 @@
+.errors-group{
+  margin: auto;
+  width: 50%;
+  background-color: rgba(148, 22, 22, 0.5);
+  padding: 20px;
+}
+
+.error-item {
+  list-style-type: none;
+}
