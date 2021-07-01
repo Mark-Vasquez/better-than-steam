@@ -14,13 +14,17 @@ html
             a(href='/')
               img(src="https://awarehouse.mblc.state.ma.us/collateral/download/20/" alt="logo" href='/' id='logo' )
         div(class='navbar-items__user-wrappers')
-          li
-            a(href='/users') User
-          li
-            a(href='/users/signup') Signup
-          li
-            a(href='/users/login') Login
-          li
-            form(action='/users/logout')
-              button(type='submit' formmethod='post') Logout
+          if locals.authenticated
+            li
+              a(href='/users') #{username}
+            li
+              form(action='/users/logout')
+                button(type='submit' formmethod='post') Logout
+          else
+            li
+              a(href='/users/signup') Signup
+            li
+              a(href='/users/login') Login
+
+
     block content
