@@ -6,9 +6,13 @@ window.addEventListener("load", async (event)=>{
     voteBtns.forEach( (btn => {
       btn.addEventListener('click', async(e) => {
         e.preventDefault();
+        console.log(e.target);
+        console.log(e.currentTarget);
 
-        const gameId = e.target.value;
-        // console.log(e.target)
+        // console.log('inside');
+        // console.log(e.target);
+        const gameId = e.currentTarget.value;
+        // console.log(gameId);
 
         const res = await fetch('/users/testroute', {
           method: 'POST',
@@ -21,16 +25,17 @@ window.addEventListener("load", async (event)=>{
         });
 
 
+        let voteCount = document.querySelector(`#vote__count-id${gameId}`)
 
-        let voteCount = parseInt(e.target.innerText)
-        console.log(voteCount);
+        // console.log(voteCount);
         if (res.status === 200) {
-          voteCount++
-          e.target.innerText = voteCount.toString()
+          voteCount.innerText = parseInt(voteCount.innerText, 10)++
 
           const triangle = document.querySelector('.game__vote-button > span > .triangle__icon');
           triangle.classList.add('triangle__icon-voted')
         }
+
+
 
         // const data = await res.json()
         // console.log(data);

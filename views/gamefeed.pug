@@ -34,4 +34,4 @@ mixin gameFeedList(gameInfo)
                   button(class='game__vote-button' value=gameInfo.id)
                     span(class='game__votes-icon-wrapper')
                       div(class='triangle__icon') ▲
-                      span(class='vote__count') #{gameVotes[gameInfo.id] || 0}
+                      span(class='vote__count' id=`vote__count-id${gameInfo.id}`) #{gameVotes[gameInfo.id] || 0}
