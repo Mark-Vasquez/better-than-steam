@@ -1,38 +1,43 @@
 body {
-    background-color: #f3f3f3;
+	background-color: #f3f3f3;
 }
 .navbar {
-    height: 30px;
-    background-color: hotpink;
+	height: 30px;
+	background-color: hotpink;
 }
 
 .navbar-items {
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin: auto;
+	align-items: center;
 }
 
 .navbar li {
-    display: inline;
-    margin: auto;
+	display: inline;
+	margin: auto;
 }
 
 .navbar-items__user-wrappers {
-    display: flex;
+	display: flex;
 }
 
 .navbar a {
-    padding: 20px;
+	padding: 20px;
 }
 
 .navbar-items > div {
-    align-content: center;
+	align-content: center;
 }
 
 #logo {
-    width: auto;
-    height: 25px;
-    /* margin-left: 1px; */
-    margin-top: 2px;
+	width: auto;
+	height: 25px;
+	/* margin-left: 1px; */
+	margin-top: 2px;
+}
+
+footer {
+	text-align: center;
+	margin: 10px;
 }
