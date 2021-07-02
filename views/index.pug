@@ -8,10 +8,10 @@ append head
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  //- img(src="https://png.pngtree.com/thumb_back/fw800/background/20190813/pngtree-horizontal-vector-halloween-banner-background-with-grunge-border-image_297712.jpg", alt="banner")
-  h1= title
-  if locals.user
-    span(class='navbar-text px-4') Welcome #{user.username}!
+  //- div(class='banner-block')
+  //-   h1= title
+  //-   if locals.user
+  //-     span(class='navbar-text px-4') Welcome #{user.username}!
 
 
   include gamefeed.pug

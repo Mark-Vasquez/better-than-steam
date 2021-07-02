@@ -7,24 +7,31 @@ html
       link(rel='stylesheet' href='/stylesheets/main.css')
       link(rel='stylesheet' href='/stylesheets/gamefeed.css')
   body
-    nav(class='navbar')
-      ul(class='navbar-items')
-        div(class='navbar-items__logo-wrapper')
-          li(class='nav-item')
+    div(class='__next')
+      div(class='banner-block')
+        div(class='banner-block-space')
+          h1(id='title')= title
+          if locals.user
+            span(class='navbar-text px-4') Welcome #{user.username}!
+      div(class='navbar__wrap')
+        div(class='navbar__top')
+          div(class='nav-item')
             a(href='/')
-              img(src="https://awarehouse.mblc.state.ma.us/collateral/download/20/" alt="logo" href='/' id='logo' )
-        div(class='navbar-items__user-wrappers')
+              img(src="/img/pac-man-steam-logo.png" alt="logo" href='/' id='logo' )
+          div(class='space__between')
+            div(class='space__between-inner')
+          div(class='navbar-items__user-wrappers')
           if locals.authenticated
-            li
-              a(href='/users') #{locals.user.username}
-            li
-              form(action='/users/logout')
+            div
+              p(class='userName') #{locals.user.username}
+            div
+              form(action='/users/logout' id='logout')
                 button(type='submit' formmethod='post') Logout
           else
-            li
-              a(href='/users/signup') Signup
-            li
-              a(href='/users/login') Login
+            div
+              a(href='/users/signup' id='signup') Signup
+            div
+              a(href='/users/login' id='login') Login
 
 
     block content
