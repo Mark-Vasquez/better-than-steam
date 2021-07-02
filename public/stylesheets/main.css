@@ -134,3 +134,12 @@ footer {
 	text-align: center;
 	margin: 10px;
 }
+
+
+.navbar-text, #title {
+	display: inline-block;
+	background-color: rgba(19, 8, 8, 0.521);
+	color: white;
+	overflow: hidden;
+	white-space: nowrap;
+}

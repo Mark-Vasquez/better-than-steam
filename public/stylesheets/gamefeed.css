@@ -5,6 +5,8 @@
     height: 120%;
     position: relative;
     flex-direction: row;
+    max-width: 1000px;
+    margin: auto;
 }
 
 div {

@@ -11,6 +11,7 @@ html
       div(class='banner-block')
         div(class='banner-block-space')
           h1(id='title')= title
+          br
           if locals.user
             span(class='navbar-text px-4') Welcome #{user.username}!
       div(class='navbar__wrap')
@@ -35,5 +36,5 @@ html
 
 
     block content
-    footer 
+    footer
       a(href='/about') About
