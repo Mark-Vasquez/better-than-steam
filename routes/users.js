@@ -129,7 +129,7 @@ router.post(
 
 	if (password !== confirmedPassword) {
 	  return res.render("signup", {
-      errors: ['your password doesn"t match up']
+      errors: [`your password doesn't match up`]
     });
 	}
 
