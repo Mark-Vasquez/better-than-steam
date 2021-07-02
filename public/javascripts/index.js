@@ -5,6 +5,7 @@ window.addEventListener("load", async (event) => {
 		btn.addEventListener("click", async (e) => {
 			e.preventDefault();
 			console.log(e.target);
+			console.log('current');
 			console.log(e.currentTarget);
 
 			// console.log('inside');
@@ -22,18 +23,20 @@ window.addEventListener("load", async (event) => {
 				}),
 			});
 
+
 			let voteCount = document.querySelector(`#vote__count-id${gameId}`);
 			if (res.status === 200) {
 				voteCount.innerText = parseInt(voteCount.innerText, 10) + 1;
 
-				const triangle = document.querySelector(
-					`#vote__count-id${gameId}`
-				);
-				triangle.classList.remove("triangle__icon-voted");
-        triangle.id = 'triangle__icon-voted'
+				//selecting the vote__count-id(gameid)'s sibling span
+				//that contains the vote count
+				const triangle = document.querySelector(`#vote__count-id${gameId} + .triangle__icon`);
+
+
+				triangle.classList.add("triangle__icon-voted");
 			} else {
-        triangle.removeAttribute('triangle__icon-voted')
-        triangle.classList.add("triangle__icon-voted")
+        // triangle.removeAttribute('triangle__icon-voted')
+        // triangle.classList.add("triangle__icon-voted")
       }
 
 			// const data = await res.json()

@@ -176,16 +176,14 @@ div {
 }
 
 .game__votes-icon-wrapper{
+  display: flex;
+  flex-direction: column-reverse;
   line-height: 16px;
-  flex-direction: column !important;
   align-items: center;
-  display: inline-flex;
   flex-wrap: nowrap;
-  justify-content: center;
-  width: inherit;
   font-weight: 600;
   font-size: 11px;
-  flex: 1;
+
 }
 
 .triangle__icon {
@@ -197,7 +195,7 @@ div {
   right: 2px;
 }
 
-#triangle__icon-voted {
+.triangle__icon-voted {
   color: orange;
   height: 20px;
   width: 20px;
