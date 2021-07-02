@@ -12,6 +12,7 @@ function populateComments(res) {
 			errorUl.appendChild(newError);
 		});
 	} else {
+		errorUl.innerHTML = "";
 		commentContainer.innerHTML = "";
 		res.comments.forEach((comment) => {
 			const contentWrapper = document.createElement("div");
@@ -63,6 +64,24 @@ function populateComments(res) {
 			textWrapper.appendChild(newEditButton);
 			textWrapper.appendChild(newDeleteButton);
 
+			newEditButton.addEventListener("click", async (e) => {
+				e.preventDefault();
+				const url = document.URL;
+				const urlSplit = url.split("/");
+				const gameId = urlSplit[urlSplit.length - 1];
+
+				const content = commentField.value;
+
+				const commentId = e.target.value;
+				const resJson = await fetch(`/comments/${commentId}`, {
+					method: "PUT",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ gameId, content }),
+				});
+				const res = await resJson.json();
+				populateComments(res);
+			});
+
 			newDeleteButton.addEventListener("click", async (e) => {
 				e.preventDefault();
 				const url = document.URL;
@@ -84,8 +103,6 @@ function populateComments(res) {
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {
-	let deleteButtons = document.querySelectorAll(".delete");
-
 	postCommentButton.addEventListener("click", async (e) => {
 		e.preventDefault();
 		const url = document.URL;
@@ -101,6 +118,30 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		const res = await resJson.json();
 		populateComments(res);
 	});
+
+	let editButtons = document.querySelectorAll(".edit");
+
+	Array.from(editButtons).forEach((editButton) => {
+		editButton.addEventListener("click", async (e) => {
+			e.preventDefault();
+			const url = document.URL;
+			const urlSplit = url.split("/");
+			const gameId = urlSplit[urlSplit.length - 1];
+
+			const content = commentField.value;
+
+			const commentId = e.target.value;
+			const resJson = await fetch(`/comments/${commentId}`, {
+				method: "PUT",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ gameId, content }),
+			});
+			const res = await resJson.json();
+			populateComments(res);
+		});
+	});
+
+	let deleteButtons = document.querySelectorAll(".delete");
 
 	Array.from(deleteButtons).forEach((deleteButton) => {
 		deleteButton.addEventListener("click", async (e) => {

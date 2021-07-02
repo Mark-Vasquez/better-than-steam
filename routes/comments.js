@@ -52,7 +52,18 @@ router.put(
 			const content = req.body.content;
 			comment.content = content;
 			await comment.save();
-			await res.json({ comment });
+
+			const userId = req.session.auth.user.id;
+			const user = await db.User.findByPk(userId);
+			const username = user.username;
+			const gameId = parseInt(req.body.gameId, 10);
+			const comments = await db.Comment.findAll({
+				where: { gameId },
+				order: [["createdAt", "DESC"]],
+				include: db.User,
+			});
+
+			await res.json({ comments, username });
 		} else {
 			errors = validatorErrors.array().map((error) => error.msg);
 			await res.json({ errors });
@@ -65,6 +76,7 @@ router.delete(
 	asyncHandler(async (req, res) => {
 		const comment = await db.Comment.findByPk(req.params.id);
 		await comment.destroy();
+
 		const userId = req.session.auth.user.id;
 		const user = await db.User.findByPk(userId);
 		const username = user.username;
