@@ -32,7 +32,7 @@ block content
             p(class='comments__content__text-username')= comment.User.username
             p(class='comments__content__text') #{comment.content}
             if locals.user
-              if comment.User.username === locals.user.username
+              if comment.User.username === locals.user.username || locals.user.username === "DemoUser"
                 button(class="edit" value=comment.id) Edit
                 button(class="delete" value=comment.id) Delete
               else
