@@ -1,5 +1,4 @@
-
-.game-container{
+.game-container {
 	display: flex;
 	flex-direction: column;
 	margin: auto;
@@ -17,13 +16,13 @@
 .game__img-wrapper {
 	display: flex;
 	justify-content: center;
-	margin: 30px auto
+	margin: 30px auto;
 }
 
 .game__img {
 	height: 300px;
 	width: auto;
-	margin: auto
+	margin: auto;
 }
 
 .game__text__publisher-wrapper {
@@ -31,8 +30,8 @@
 	font-size: 20px;
 }
 
-.game__text-wrapper{
-	margin: 30px auto
+.game__text-wrapper {
+	margin: 30px auto;
 }
 
 .game__text__description-wrapper {
@@ -44,33 +43,31 @@
 	font-size: 20px;
 }
 
-.game__genre-wrapper{
+.game__genre-wrapper {
 	text-align: center;
 }
 
-.game__text__snippet-wrapper{
+.game__text__snippet-wrapper {
 	display: block;
 }
 
 #post-comment-button {
 	width: 160px;
 	float: right;
-	margin-top: 10px
+	margin-top: 10px;
 }
 
-.comments__content__user{
+.comments__content__user {
 	padding-right: 10px;
-	padding-top: 10px
+	padding-top: 10px;
 }
-
 
 .comments__content__user-avatar {
 	width: 40px;
-
 }
 
 .comments-container {
-	margin: 30px 80px auto 10px
+	margin: 30px 80px auto 10px;
 }
 
 .comments__content-wrapper {
@@ -79,7 +76,7 @@
 	flex-direction: row;
 }
 
-.comments__content__text-username{
+.comments__content__text-username {
 	font-size: 14px;
 	font-weight: bold;
 }

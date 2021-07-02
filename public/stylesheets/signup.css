@@ -7,25 +7,23 @@ h1 {
 	margin: 10% auto;
 	text-align: left;
 	flex-direction: column;
-	width: 42%;
-	/* align-items: center; */
+	width: 400px;
 }
 
 .signup-form input {
 	margin-bottom: 10px;
-	padding-bottom: 10px;
+	font-size: 15px;
 	width: 400px;
 	align-self: center;
 }
 
 .signup-form button {
 	margin-bottom: 10px;
-	padding-bottom: 10px;
+	padding: 5px;
 	width: 100px;
 	align-self: center;
 }
 
-
 .test-button-wrapper {
-  margin: 100% 0 40% 20%
+	margin: 100% 0 40% 20%;
 }
