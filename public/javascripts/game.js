@@ -2,7 +2,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 	const postCommentButton = document.getElementById("post-comment-button");
 	const commentField = document.querySelector(".comment-content");
 	const errorUl = document.getElementById("errors-ul");
-	const commentContainer = document.querySelector(".comment-container");
+	const commentContainer = document.querySelector(".comments-container");
 
 	postCommentButton.addEventListener("click", async (e) => {
 		e.preventDefault();
@@ -17,7 +17,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
 			body: JSON.stringify({ content, gameId }),
 		});
 		const res = await resJson.json();
-		console.log(resJson);
 		if (res.errors) {
 			errorUl.innerHTML = "";
 			res.errors.forEach((error) => {
@@ -28,36 +27,53 @@ window.addEventListener("DOMContentLoaded", (event) => {
 		} else {
 			commentContainer.innerHTML = "";
 			res.comments.forEach((comment) => {
-				const newComment = document.createElement("div");
-				const newEditButton = document.createElement("button");
-				const newDeleteButton = document.createElement("button");
-				const newDivContainer = document.createElement("div");
-                const commentUsername = document.createElement("div");
+				const contentWrapper = document.createElement("div");
+				contentWrapper.classList.add("comments__content-wrapper");
 
-                newDivContainer.class= "comment-content-and-buttons";
-                commentUsername.innerHTML = comment.User.username;
-				newComment.innerHTML = comment.content;
-                commentUsername.class = "username";
-                newComment.class = "comment";
-				newEditButton.class = "edit";
+				const contentUser = document.createElement("div");
+				contentUser.classList.add("comments__content__user");
+
+				const avatar = document.createElement("img");
+				avatar.classList.add("comments__content__user-avatar");
+				avatar.src =
+					"https://www.pikpng.com/pngl/b/279-2797047_user-avatar-icon-portable-network-graphics-clipart.png";
+
+				const textWrapper = document.createElement("div");
+				textWrapper.classList.add("comments__content__text-wrapper");
+
+				const textUsername = document.createElement("p");
+				textUsername.classList.add("comments__content__text-username");
+				textUsername.innerHTML = comment.User.username;
+
+				const text = document.createElement("p");
+				text.classList.add("comments__content__text");
+				text.innerHTML = comment.content;
+
+				const newEditButton = document.createElement("button");
+				newEditButton.classList.add("edit");
 				newEditButton.innerText = "Edit";
 				newEditButton.value = comment.id;
-				newDeleteButton.class = "delete";
+
+				const newDeleteButton = document.createElement("button");
+				newDeleteButton.classList.add("delete");
 				newDeleteButton.innerText = "Delete";
 				newDeleteButton.value = comment.id;
-				if (commentUsername.innerHTML !== res.username){
+
+				if (textUsername.innerHTML !== res.username) {
 					newEditButton.disabled = true;
 					newDeleteButton.disabled = true;
 				}
-				newDivContainer.appendChild(commentUsername);
-				newDivContainer.appendChild(newComment);
-				newDivContainer.appendChild(newEditButton);
-				newDivContainer.appendChild(newDeleteButton);
-				commentContainer.appendChild(newDivContainer);
+
+				commentContainer.appendChild(contentWrapper);
+				contentWrapper.appendChild(contentUser);
+				contentUser.appendChild(avatar);
+				contentWrapper.appendChild(textWrapper);
+				textWrapper.appendChild(textUsername);
+				textWrapper.appendChild(text);
+				textWrapper.appendChild(newEditButton);
+				textWrapper.appendChild(newDeleteButton);
 			});
 			commentField.value = "";
 		}
 	});
-
-
 });
