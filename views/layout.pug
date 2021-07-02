@@ -11,13 +11,14 @@ html
       div(class='banner-block')
         div(class='banner-block-space')
           h1(id='title')= title
+          br
           if locals.user
             span(class='navbar-text px-4') Welcome #{user.username}!
       div(class='navbar__wrap')
         div(class='navbar__top')
-          div(class='nav-item')
+          div(class='nav-item navbar__logo-wrapper')
             a(href='/')
-              img(src="/img/pac-man-steam-logo.png" alt="logo" href='/' id='logo' )
+              img(src="/img/logo.png" alt="logo" href='/' id='logo' )
           div(class='space__between')
             div(class='space__between-inner')
           div(class='navbar-items__user-wrappers')
@@ -35,5 +36,5 @@ html
 
 
     block content
-    footer 
+    footer
       a(href='/about') About

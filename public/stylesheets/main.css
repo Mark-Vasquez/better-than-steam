@@ -56,11 +56,19 @@ body {
 	align-content: center;
 }
 
+/* .navbar__logo-wrapper {
+	padding-top: 60px;
+} */
+
+
 #logo {
-	width: 160px;
-	height: 90px;
-	overflow: hidden;
-	margin-top: 34px;
+	position: absolute;
+	height: 70px;
+	top: 5px;
+	left: 0px;
+	background: rgb(2,0,36);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(10,52,129,0) 58%);
+	border-radius: 60px;
 }
 
 .__next {
@@ -133,4 +141,13 @@ body {
 footer {
 	text-align: center;
 	margin: 10px;
+}
+
+
+.navbar-text, #title {
+	display: inline-block;
+	background-color: rgba(19, 8, 8, 0.521);
+	color: white;
+	overflow: hidden;
+	white-space: nowrap;
 }
