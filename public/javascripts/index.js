@@ -27,11 +27,14 @@ window.addEventListener("load", async (event) => {
 				voteCount.innerText = parseInt(voteCount.innerText, 10) + 1;
 
 				const triangle = document.querySelector(
-					".game__vote-button > span > .triangle__icon"
+					`#vote__count-id${gameId}`
 				);
-				console.log(triangle);
-				triangle.classList.add("triangle__icon-voted");
-			}
+				triangle.classList.remove("triangle__icon-voted");
+        triangle.id = 'triangle__icon-voted'
+			} else {
+        triangle.removeAttribute('triangle__icon-voted')
+        triangle.classList.add("triangle__icon-voted")
+      }
 
 			// const data = await res.json()
 			// console.log(data);
